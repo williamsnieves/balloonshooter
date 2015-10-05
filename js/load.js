@@ -4,6 +4,12 @@ var loadState = {
 	 	game.load.image('sky', 'assets/bgmenu.png');
 	 	game.load.image('balloon', 'assets/balloon.png');
 	 	game.load.image('balloonbad', 'assets/balloonbad.png');
+	 	game.load.image('heart', 'assets/heart.png');
+
+	 	game.load.image('scoreboard', 'assets/scoreboard.png');
+	 	game.load.image('scoreboardwin', 'assets/scoreboardwin.png');
+	 	game.load.audio('explode', 'assets/explode.mp3');
+	 	game.load.audio('music', 'assets/music.ogg');
 	 },
 
 	 create: function(){
