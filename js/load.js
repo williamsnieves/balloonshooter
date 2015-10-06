@@ -5,6 +5,8 @@ var loadState = {
 	 	game.load.image('balloon', 'assets/balloon.png');
 	 	game.load.image('balloonbad', 'assets/balloonbad.png');
 	 	game.load.image('heart', 'assets/heart.png');
+	 	game.load.image('cats', 'assets/cats.gif');
+	 	game.load.image('reload', 'assets/reload.png');
 
 	 	game.load.image('scoreboard', 'assets/scoreboard.png');
 	 	game.load.image('scoreboardwin', 'assets/scoreboardwin.png');

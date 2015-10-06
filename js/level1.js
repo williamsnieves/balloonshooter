@@ -4,6 +4,8 @@ var level1State = {
 
 		this.bgSound = game.add.audio('music');
 
+		this.cat = game.add.sprite(0, 200, 'cats');
+
 		this.bgSound.play();
 		this.bgSound.loop = true;	
 
@@ -158,6 +160,13 @@ var level1State = {
 
 		this.scoreBoardGroup.create(game.world.width / 2 - 150 , 150, "scoreboard");
 
+		this.buttonReload = game.add.sprite(game.world.width / 2 - 30 , 320, "reload");
+		this.buttonReload.inputEnabled = true;
+		
+
+		this.buttonReload.events.onInputDown.add(this.restartGame, this);
+		this.scoreBoardGroup.add(this.buttonReload);
+
 		this.scoreBoardGroup.add(this.lifeFinalScore);
 		this.scoreBoardGroup.add(this.finalScore);
 		this.scoreBoardGroup.add(this.gameOverLabel);
@@ -179,6 +188,13 @@ var level1State = {
 		this.finalScore = game.add.text(300,180,'Balloons: ', {font : '18px Arial', fill: '#ffffff'})
 
 		this.scoreBoardGroup.create(game.world.width / 2 - 150 , 150, "scoreboardwin");
+
+		this.buttonReload = game.add.sprite(game.world.width / 2 - 30 , 320, "reload");
+		this.buttonReload.inputEnabled = true;
+	
+
+		this.buttonReload.events.onInputDown.add(this.restartGame, this);
+		this.scoreBoardGroup.add(this.buttonReload);
 
 		this.scoreBoardGroup.add(this.lifeFinalScore);
 		this.scoreBoardGroup.add(this.finalScore);
@@ -206,5 +222,11 @@ var level1State = {
 			this.showScoreBoardDead();
 		}
 			
+	},
+
+	restartGame: function(){
+		//alert("test");
+		game.time.events.start();
+		game.state.start('level1');
 	}
 }
