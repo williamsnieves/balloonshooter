@@ -4,8 +4,12 @@ var level1State = {
 
 		this.bgSound = game.add.audio('music');
 
-		this.cat = game.add.sprite(0, 200, 'cats');
+		this.cat = game.add.sprite(20, 200, 'cats');
+		this.cat.anchor.setTo(0.5, 0.5);
 
+
+		//game.add.tween(this.cat).to({ y: 0 }, 4000, Phaser.Easing.Sinusoidal.InOut, true, 200, 1000, false);
+		game.add.tween(this.cat).to( { y: 150 }, 2000, Phaser.Easing.Back.InOut, true, 0, 500, true);
 		this.bgSound.play();
 		this.bgSound.loop = true;	
 
@@ -50,6 +54,7 @@ var level1State = {
 
 	update: function(){
 		//this.balloonGroup.y-=1
+
 		this.balloonGroup.forEach(this.moveBalloons, this);
 		//this.moveBalloons();
 	},
@@ -132,9 +137,10 @@ var level1State = {
 		}
 
 		if(this.lifes == 0){
+			this.killCat();
 			this.win = false;
 			this.messageGameOver = "You loose!!!"
-			this.gameOver();
+			//this.gameOver();
 		}
 
 
@@ -144,11 +150,12 @@ var level1State = {
 	},
 
 	killCat: function(){
-
 		
+		tween = game.add.tween(this.cat).to( { x: [ 0, 550, 650], y: [ 0, 50, 10] }, 4000, "Sine.easeInOut", true, -1, true);
+		tween.interpolation(Phaser.Math.bezierInterpolation);
 
-
-
+		game.add.tween(this.cat).to({angle: '+360'}, 500, Phaser.Easing.Linear.None, true, 100, true);
+		game.add.tween(this.cat.scale).to({x: '-2', y: '-2'}, 1000, Phaser.Easing.Cubic.In, true, 100, true);
 	},
 
 	showScoreBoardDead: function(){
