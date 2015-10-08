@@ -8,6 +8,9 @@ var level1State = {
 		this.cat.anchor.setTo(0.5, 0.5);
 
 
+		this.pointsLimit = 40;
+
+
 		//game.add.tween(this.cat).to({ y: 0 }, 4000, Phaser.Easing.Sinusoidal.InOut, true, 200, 1000, false);
 		game.add.tween(this.cat).to( { y: 150 }, 2000, Phaser.Easing.Back.InOut, true, 0, 500, true);
 		this.bgSound.play();
@@ -130,10 +133,11 @@ var level1State = {
 			this.heartsGroup.children[this.lifes].kill();
 		}
 
-		if(this.counterKillBalloons == 10){
+		if(this.counterKillBalloons == this.pointsLimit){
 			this.win = true;
 			this.messageGameOver = "You win!!!";
-			this.gameOver();
+			this.freeCat();
+			//this.gameOver();
 		}
 
 		if(this.lifes == 0){
@@ -151,11 +155,32 @@ var level1State = {
 
 	killCat: function(){
 		
-		tween = game.add.tween(this.cat).to( { x: [ 0, 550, 650], y: [ 0, 50, 10] }, 4000, "Sine.easeInOut", true, -1, true);
+		tween = game.add.tween(this.cat).to( { x: [ 0, 550, 650], y: [ 0, 50, 10], angle: '+620', alpha: 0}, 1000);
+
 		tween.interpolation(Phaser.Math.bezierInterpolation);
 
-		game.add.tween(this.cat).to({angle: '+360'}, 500, Phaser.Easing.Linear.None, true, 100, true);
-		game.add.tween(this.cat.scale).to({x: '-2', y: '-2'}, 1000, Phaser.Easing.Cubic.In, true, 100, true);
+		tween.onComplete.add(this.gameOver, this);
+
+		tween.start();
+
+		//game.add.tween(this.cat).to({angle: '+360'});
+		//game.add.tween(this.cat.scale).to({x: '-2', y: '-2'});
+	},
+
+	freeCat: function(){
+		
+		tween = game.add.tween(this.cat).to( { x: [ 0, 550 ], y: [ 0, 50]}, 1000);
+		tweenScale = game.add.tween(this.cat.scale).to( { x: '2', y: '2'}, 1000);
+		tweenScale.start();
+
+		tween.interpolation(Phaser.Math.bezierInterpolation);
+
+		tween.onComplete.add(this.gameOver, this);
+
+		tween.start();
+
+		//game.add.tween(this.cat).to({angle: '+360'});
+		//game.add.tween(this.cat.scale).to({x: '-2', y: '-2'});
 	},
 
 	showScoreBoardDead: function(){

@@ -1,0 +1,27 @@
+{
+  "name": "balloonshooter",
+  "private": true,
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "description": "save the cat!!!",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "gamestart": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamsnieves/balloonshooter.git"
+  },
+  "keywords": [
+    "game",
+    "phaser"
+  ],
+  "author": "willians nieves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williamsnieves/balloonshooter/issues"
+  },
+  "homepage": "https://github.com/williamsnieves/balloonshooter"
+}
