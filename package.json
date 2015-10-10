@@ -2,7 +2,7 @@
   "name": "balloonshooter",
   "private": true,
   "engines": {
-    "node": ">=0.8.0"
+    "node": "0.10.x"
   },
   "description": "save the cat!!!",
   "version": "1.0.0",
